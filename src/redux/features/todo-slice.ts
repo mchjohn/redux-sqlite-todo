@@ -21,8 +21,10 @@ const reducers = {
   addTodo: (state: TodoState, action: PayloadAction<ITodo>) => {
     state.todos.push(action.payload)
   },
-  doneTodo: (state: TodoState) => {
-    console.debug('READ: ', state.todo)
+  toggleDoneTodo: (state: TodoState, action: PayloadAction<ITodo>) => {
+    state.todos = state.todos.map((todo) =>
+      todo.id === action.payload.id ? { ...todo, isDone: !todo.isDone } : todo
+    )
   },
   removeTodo: (state: TodoState) => {
     console.debug('REMOVED: ', state.todo)
@@ -40,7 +42,7 @@ export const todoSlice = createSlice({
 export const todoReducer = todoSlice.reducer
 
 // Exporta as actions geradas pelo slice
-export const { addTodo, doneTodo, removeTodo } = todoSlice.actions
+export const { addTodo, toggleDoneTodo, removeTodo } = todoSlice.actions
 
 // Seleciona o item de todo atual no estado
 export const selectTodo = (state: TodoState) => state.todo

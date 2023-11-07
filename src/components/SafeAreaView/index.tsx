@@ -8,7 +8,7 @@ export function SafeContainer({ children }: PropsWithChildren) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#000814',
+    backgroundColor: '#F3F8F6',
     paddingVertical: 32,
     paddingHorizontal: 16,
   },

@@ -1,5 +1,6 @@
 import uuid from 'react-native-uuid'
 import { useState } from 'react'
+import { Keyboard } from 'react-native'
 import { useDispatch } from 'react-redux'
 
 import { useAppSelector } from '../../hooks/useSelector'
@@ -16,10 +17,14 @@ export function useHome() {
     const todo = { id: uuid.v4().toString(), name: todoTitle, isDone: false }
 
     dispatch(addTodo(todo))
+
+    setTodoTitle('')
+    Keyboard.dismiss()
   }
 
   return {
     todos,
+    todoTitle,
     setTodoTitle,
     handleAddTodo,
   }

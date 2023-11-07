@@ -8,7 +8,7 @@ export function TodoList({ todos }: { todos: ITodo[] }) {
   return (
     <S.TodoList
       data={todos}
-      renderItem={({ item }) => <TodoItem title={item.name} />}
+      renderItem={({ item }) => <TodoItem todo={item} />}
       keyExtractor={item => item.id}
       contentContainerStyle={{ gap: 16, paddingBottom: 32 }}
     />

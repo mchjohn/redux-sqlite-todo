@@ -6,7 +6,7 @@ import { TodoList } from '../../components/TodoList'
 import * as S from './styles'
 
 export function Home() {
-  const { todos, setTodoTitle, handleAddTodo } = useHome()
+  const { todos, todoTitle, setTodoTitle, handleAddTodo } = useHome()
 
   return (
     <S.Container>
@@ -16,6 +16,7 @@ export function Home() {
 
       <S.Form>
         <S.TextInput
+          value={todoTitle}
           placeholder='Digite sua tarefa'
           onChangeText={(e) => setTodoTitle(e)}
         />

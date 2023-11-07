@@ -2,7 +2,7 @@ import styled from 'styled-components/native'
 
 export const Container = styled.View`
   flex: 1;
-  background-color: #000814;
+  background-color: #F3F8F6;
 `
 
 export const Todos = styled.View`
@@ -17,10 +17,10 @@ export const Form = styled.View`
 
 export const TextInput = styled.TextInput`
   height: 48px;
-  border: 1px solid #e5e5e5;
   padding-left: 8px;
   border-radius: 4px;
+  background-color: #DCDAE2;
 
-  color: #FFC300;
+  color: #041E24;
   font-size: 16px;
 `

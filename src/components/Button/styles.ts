@@ -5,17 +5,13 @@ export const Pressable = styled.Pressable`
   align-items: center;
   border-radius: 4px;
   justify-content: center;
-  border: 1px solid #FFC300;
+  border: 1px solid #041E24;
   letter-spacing: 3px;
-
-  color: #000814;
-  font-size: 16px;
-  font-family: monospace;
 `
 
 export const Text = styled.Text`
-  color: #FFC300;
-  font-size: 16px;
+  color: #041E24;
+  font-size: 18px;
   font-weight: 900;
   letter-spacing: 1px;
 `

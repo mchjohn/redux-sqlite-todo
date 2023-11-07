@@ -3,7 +3,7 @@ import { StatusBar } from 'expo-status-bar'
 
 import { Home } from './src/screens/Home'
 
-import { store } from './src/services/redux/stores/todoStore'
+import { store } from './src/redux/store'
 
 import { SafeContainer } from './src/components/SafeAreaView'
 

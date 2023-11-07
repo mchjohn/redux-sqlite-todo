@@ -1,8 +1,9 @@
 import uuid from 'react-native-uuid'
 import { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
-import { addTodo, selectTodo } from '../../services/redux/reducers/todoReducer'
+import { addTodo, selectTodos } from '../../redux/features/todo-slice'
+import { useAppSelector } from '../../hooks/useSelector'
 
 import { Button } from '../../components/Button'
 import { TodoList } from '../../components/TodoList'
@@ -11,7 +12,8 @@ import * as S from './styles'
 
 export function Home() {
   const dispatch = useDispatch()
-  const { todos } = useSelector(selectTodo)
+  const todos = useAppSelector(selectTodos)
+
   const [todoTitle, setTodoTitle] = useState('')
 
   const handleAddTodo = () => {

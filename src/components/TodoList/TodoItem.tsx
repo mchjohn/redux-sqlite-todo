@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 
 import * as S from './styles'
 import { ITodo } from '../../interfaces/todo'
-import { toggleDoneTodo } from '../../redux/features/todo-slice'
+import { removeTodo, toggleDoneTodo } from '../../redux/features/todo-slice'
 
 
 export function TodoItem({ todo }: { todo: ITodo }) {
@@ -11,6 +11,10 @@ export function TodoItem({ todo }: { todo: ITodo }) {
 
   const handleDoneTodo = () => {
     dispatch(toggleDoneTodo(todo))
+  }
+
+  const handleRemoveTodo = () => {
+    dispatch(removeTodo(todo))
   }
 
   return (
@@ -24,7 +28,12 @@ export function TodoItem({ todo }: { todo: ITodo }) {
           color={todo.isDone ? '#2F9363' : '#5bac85'}
           onPress={handleDoneTodo}
         />
-        <Octicons name="trash" size={32} color="#E96D3A" />
+        <Octicons
+          name="trash"
+          size={32}
+          color="#E96D3A"
+          onPress={handleRemoveTodo}
+        />
       </S.Actions>
     </S.Item>
   )

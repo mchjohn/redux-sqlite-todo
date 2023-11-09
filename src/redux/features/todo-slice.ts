@@ -26,8 +26,8 @@ const reducers = {
       todo.id === action.payload.id ? { ...todo, isDone: !todo.isDone } : todo
     )
   },
-  removeTodo: (state: TodoState) => {
-    console.debug('REMOVED: ', state.todo)
+  removeTodo: (state: TodoState, action: PayloadAction<ITodo>) => {
+    state.todos = state.todos.filter((todo) => todo.id !== action.payload.id)
   },
 }
 

@@ -85,4 +85,58 @@ function readTodos() {
   return promise
 }
 
-export { init, createTodo, readTodos }
+function updateTodo(todo: ITodo) {
+  const promise = new Promise<ITodo[]> ((resolve, reject) => {
+    db.transaction(tx => {
+      tx.executeSql(
+        'UPDATE todos SET isDone = ? WHERE id = ?;',
+        [todo.isDone > 0 ? 0 : 1, todo.id],
+        null,
+        (_, error) => {
+          reject(error)
+          return false
+        },
+      ),
+      tx.executeSql(
+        'SELECT * FROM todos;',
+        [],
+        (_, { rows }) => resolve(rows._array),
+        (_, error) => {
+          reject(error)
+          return false
+        },
+      )
+    })
+  })
+
+  return promise
+}
+
+function deleteTodo(todo: ITodo) {
+  const promise = new Promise<ITodo[]> ((resolve, reject) => {
+    db.transaction(tx => {
+      tx.executeSql(
+        'DELETE FROM todos WHERE id = ?;',
+        [todo.id],
+        null,
+        (_, error) => {
+          reject(error)
+          return false
+        },
+      ),
+      tx.executeSql(
+        'SELECT * FROM todos;',
+        [],
+        (_, { rows }) => resolve(rows._array),
+        (_, error) => {
+          reject(error)
+          return false
+        },
+      )
+    })
+  })
+
+  return promise
+}
+
+export { init, createTodo, readTodos, updateTodo, deleteTodo }

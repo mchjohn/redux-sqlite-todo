@@ -1,38 +1,32 @@
 import { Octicons } from '@expo/vector-icons'
-import { useDispatch } from 'react-redux'
+
+import { ITodo } from '../../interfaces/todo'
+
+import { useTodoContext } from '../../contexts/useTodo'
 
 import * as S from './styles'
-import { ITodo } from '../../interfaces/todo'
-import { removeTodo, toggleDoneTodo } from '../../redux/features/todo-slice'
 
+export function TodoItem({ task }: { task: ITodo }) {
+  const { todo } = useTodoContext()
 
-export function TodoItem({ todo }: { todo: ITodo }) {
-  const dispatch = useDispatch()
-
-  const handleDoneTodo = () => {
-    dispatch(toggleDoneTodo(todo))
-  }
-
-  const handleRemoveTodo = () => {
-    dispatch(removeTodo(todo))
-  }
+  const isDone = task.isDone > 0
 
   return (
     <S.Item>
-      <S.Text isDone={todo.isDone}>{todo.name}</S.Text>
+      <S.Text isDone={isDone}>{task.name}</S.Text>
 
       <S.Actions>
         <Octicons
           size={32}
-          name={todo.isDone ? 'check-circle' : 'circle'}
-          color={todo.isDone ? '#2F9363' : '#5bac85'}
-          onPress={handleDoneTodo}
+          name={isDone ? 'check-circle' : 'circle'}
+          color={isDone ? '#2F9363' : '#5bac85'}
+          onPress={() => todo.handleUpdate(task)}
         />
         <Octicons
           name="trash"
           size={32}
           color="#E96D3A"
-          onPress={handleRemoveTodo}
+          onPress={() => todo.handleDelete(task)}
         />
       </S.Actions>
     </S.Item>

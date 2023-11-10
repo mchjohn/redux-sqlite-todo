@@ -1,17 +1,31 @@
-import { useHome } from './useHome'
+import { useEffect } from 'react'
 
 import { Button } from '../../components/Button'
 import { TodoList } from '../../components/TodoList'
 
 import * as S from './styles'
+import { useTodo } from '../../hooks/useTodo'
+import { Loading } from '../../components/Loading'
 
 export function Home() {
-  const { todos, todoTitle, setTodoTitle, handleAddTodo } = useHome()
+  const {
+    todos,
+    todoTitle,
+    isLoading,
+    fetchTodos,
+    handleAddTodo,
+    setTodoTitle
+  } = useTodo()
+
+  useEffect(() => {
+    fetchTodos()
+  }, [fetchTodos])
 
   return (
     <S.Container>
       <S.Todos>
-        <TodoList todos={todos} />
+        {isLoading && <Loading />}
+        {!isLoading && <TodoList todos={todos} />}
       </S.Todos>
 
       <S.Form>
@@ -23,7 +37,7 @@ export function Home() {
 
         <Button
           title='Adicionar'
-          onPress={handleAddTodo}
+          onPress={() => handleAddTodo(todoTitle)}
         />
       </S.Form>
     </S.Container>

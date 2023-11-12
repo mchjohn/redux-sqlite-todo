@@ -1,13 +1,37 @@
+# Lista de Tarefas com Redux Toolkit e SQLite
 
-# Todo List com Redux Toolkit e SQLite
+Este é um aplicativo de estudo sobre Redux Toolkit e SQLite com React Native.
 
-Aplicativo para estudar sobre Redux Toolkit e SQLite com React Native.
+## Sobre o Projeto
 
+Este projeto é um simples aplicativo de lista de tarefas construído com React Native.
+Ele usa Redux Toolkit para gerenciamento de estado e SQLite para persistência de dados.
+O principal objetivo deste projeto é entender como o Redux Toolkit e o SQLite funcionam em um ambiente React Native.
 
+## Tecnologias Utilizadas
 
-## Redux e Redux Toolkit
+- React Native: Uma estrutura para construir aplicativos nativos usando React.
+- Redux Toolkit: O conjunto de ferramentas oficial para desenvolvimento eficiente com Redux.
+- SQLite: Uma biblioteca C que fornece um banco de dados leve baseado em disco.
 
-[Redux](https://redux.js.org/introduction/getting-started) é uma biblioteca de gerenciamento de estado em JavaScript.
-Fornece uma maneira previsível de gerenciar o estado da aplicação, permitindo que os dados sejam armazenados em um local centralizado (`store`) e controlados por meio de ações (`actions`) que descrevem as mudanças no estado. Isso facilita o desenvolvimento, depuração e manutenção de aplicativos complexos, tornando as atualizações de estado previsíveis e rastreáveis.
+## Começando
 
-[Redux Toolkit](https://redux.js.org/introduction/getting-started#redux-toolkit) é uma biblioteca que simplifica o uso do Redux, tornando-o mais fácil de configurar e escrever. Ele fornece uma série de utilitários e convenções que ajudam a reduzir a quantidade de código necessário para configurar e usar o Redux em um aplicativo. Além disso, o Redux Toolkit inclui uma configuração predefinida para a estrutura do Redux, que permite que você defina reducers, ações e um store de forma mais concisa.
+1. Clone o repositório: `git clone git@github.com:mchjohn/redux-sqlite-todo.git`
+2. Instale as dependências: `npm install`
+3. Execute o aplicativo: `npm start`
+
+## Recursos
+
+- Adicionar uma nova tarefa
+- Marcar uma tarefa como concluída
+- Excluir uma tarefa
+
+## Branches
+
+O projeto é dividido em 3 branches, cada uma com uma configuração específica:
+
+- `master`: Esta branch contém a versão base do aplicativo. O gerenciamento de estado é feito usando Redux, mas não há persistência de dados implementada.
+
+- `expo-sqlite`: Esta branch utiliza o SQLite para a persistência de dados. E Context API para o gerenciamento de estado.
+
+- `sqlite-redux`: Esta branch utiliza o SQLite para a persistência de dados e o Redux para gerenciamento de estado.

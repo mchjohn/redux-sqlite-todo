@@ -30,7 +30,7 @@ O principal objetivo deste projeto é entender como o Redux Toolkit e o SQLite f
 
 O projeto é dividido em 3 branches, cada uma com uma configuração específica:
 
-- `master`: Esta branch contém a versão base do aplicativo. O gerenciamento de estado é feito usando Redux, mas não há persistência de dados implementada.
+- `main`: Esta branch contém a versão base do aplicativo. O gerenciamento de estado é feito usando Redux, mas não há persistência de dados implementada.
 
 - `expo-sqlite`: Esta branch utiliza o SQLite para a persistência de dados. E Context API para o gerenciamento de estado.
 

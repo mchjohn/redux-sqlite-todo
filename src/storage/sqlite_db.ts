@@ -112,12 +112,12 @@ function updateTodo(todo: ITodo) {
   return promise
 }
 
-function deleteTodo(todo: ITodo) {
+function deleteTodo(id: string) {
   const promise = new Promise<ITodo[]> ((resolve, reject) => {
     db.transaction(tx => {
       tx.executeSql(
         'DELETE FROM todos WHERE id = ?;',
-        [todo.id],
+        [id],
         null,
         (_, error) => {
           reject(error)

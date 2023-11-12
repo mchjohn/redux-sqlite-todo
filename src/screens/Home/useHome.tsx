@@ -1,31 +1,40 @@
-import uuid from 'react-native-uuid'
-import { useState } from 'react'
 import { Keyboard } from 'react-native'
 import { useDispatch } from 'react-redux'
+import { useEffect, useState } from 'react'
 
 import { useAppSelector } from '../../hooks/useSelector'
 
-import { addTodo, selectTodos } from '../../redux/features/todo-slice'
+import { AppDispatch } from '../../redux/store'
+import {
+  selectTodos,
+  addTodoAsync,
+  selectLoading,
+  fetchTodosAsync
+} from '../../redux/features/todo'
 
 export function useHome() {
   const todos = useAppSelector(selectTodos)
-  const dispatch = useDispatch()
+  const isLoading = useAppSelector(selectLoading)
+  const dispatch = useDispatch<AppDispatch>()
 
-  const [todoTitle, setTodoTitle] = useState('')
+  const [todoName, setTodoName] = useState('')
 
   const handleAddTodo = () => {
-    const todo = { id: uuid.v4().toString(), name: todoTitle, isDone: false }
+    dispatch(addTodoAsync(todoName))
 
-    dispatch(addTodo(todo))
-
-    setTodoTitle('')
+    setTodoName('')
     Keyboard.dismiss()
   }
 
+  useEffect(() => {
+    dispatch(fetchTodosAsync())
+  }, []) //  eslint-disable-line
+
   return {
     todos,
-    todoTitle,
-    setTodoTitle,
+    todoName,
+    isLoading,
+    setTodoName,
     handleAddTodo,
   }
 }

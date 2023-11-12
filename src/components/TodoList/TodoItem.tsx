@@ -1,13 +1,15 @@
 import { Octicons } from '@expo/vector-icons'
+import { useDispatch } from 'react-redux'
 
 import { ITodo } from '../../interfaces/todo'
 
-import { useTodoContext } from '../../contexts/useTodo'
+import { AppDispatch } from '../../redux/store'
+import { removeTodoAsync, toggleTodoIsDoneAsync } from '../../redux/features/todo'
 
 import * as S from './styles'
 
 export function TodoItem({ task }: { task: ITodo }) {
-  const { todo } = useTodoContext()
+  const dispatch = useDispatch<AppDispatch>()
 
   const isDone = task.isDone > 0
 
@@ -20,13 +22,13 @@ export function TodoItem({ task }: { task: ITodo }) {
           size={32}
           name={isDone ? 'check-circle' : 'circle'}
           color={isDone ? '#2F9363' : '#5bac85'}
-          onPress={() => todo.handleUpdate(task)}
+          onPress={() => dispatch(toggleTodoIsDoneAsync(task))}
         />
         <Octicons
           name="trash"
           size={32}
           color="#E96D3A"
-          onPress={() => todo.handleDelete(task)}
+          onPress={() => dispatch(removeTodoAsync(task.id))}
         />
       </S.Actions>
     </S.Item>

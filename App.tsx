@@ -3,7 +3,6 @@ import { StatusBar } from 'expo-status-bar'
 
 import { init } from './src/storage/sqlite_db'
 import { store } from './src/redux/store'
-import { TodoProvider } from './src/contexts/useTodo'
 
 import { Home } from './src/screens/Home'
 
@@ -16,13 +15,11 @@ init()
 export default function App() {
   return (
     <Provider store={store}>
-      <TodoProvider>
-        <SafeContainer>
-          <StatusBar style="dark" />
+      <SafeContainer>
+        <StatusBar style="dark" />
 
-          <Home />
-        </SafeContainer>
-      </TodoProvider>
+        <Home />
+      </SafeContainer>
     </Provider>
   )
 }

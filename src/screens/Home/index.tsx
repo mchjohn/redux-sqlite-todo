@@ -1,6 +1,4 @@
-import { useEffect } from 'react'
-
-import { useTodoContext } from '../../contexts/useTodo'
+import { useHome } from './useHome'
 
 import { Button } from '../../components/Button'
 import { Loading } from '../../components/Loading'
@@ -9,29 +7,25 @@ import { TodoList } from '../../components/TodoList'
 import * as S from './styles'
 
 export function Home() {
-  const { todo } = useTodoContext()
-
-  useEffect(() => {
-    todo.fetchAll()
-  }, []) // eslint-disable-line
+  const { todos, todoName, isLoading, setTodoName, handleAddTodo } = useHome()
 
   return (
     <S.Container>
       <S.Todos>
-        {todo.isLoading && <Loading />}
-        {!todo.isLoading && <TodoList todos={todo.all} />}
+        {isLoading && <Loading />}
+        {!isLoading && <TodoList todos={todos} />}
       </S.Todos>
 
       <S.Form>
         <S.TextInput
-          value={todo.name}
+          value={todoName}
           placeholder='Digite sua tarefa'
-          onChangeText={(e) => todo.setName(e)}
+          onChangeText={(e) => setTodoName(e)}
         />
 
         <Button
           title='Adicionar'
-          onPress={() => todo.handleAdd(todo.name)}
+          onPress={handleAddTodo}
         />
       </S.Form>
     </S.Container>

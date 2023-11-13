@@ -1,10 +1,11 @@
+import { Animated } from 'react-native'
 import styled from 'styled-components/native'
 
 type Props = {
   isDone: boolean;
 }
 
-export const Container = styled.View`
+export const Container = styled(Animated.View)`
   padding: 14px;
   align-items: center;
   border-radius: 4px;
